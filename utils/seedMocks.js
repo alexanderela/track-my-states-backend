@@ -38,4 +38,9 @@ const mockFavoriteStates = [
 		'lived_in': true,
 		'want_to_go': false,
 	}	
-]
+];
+
+module.exports = {
+	'mockUsers': mockUsers,
+	'mockFavoriteStates': mockFavoriteStates
+};

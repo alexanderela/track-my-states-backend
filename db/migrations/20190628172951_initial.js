@@ -1,5 +1,5 @@
 
-exports.up = function(knex, Promise) {
+exports.up = function(knex) {
   return Promise.all([
   	knex.schema.createTable('track_my_states_users', function(table) {
   		table.increments('id').primary();
@@ -18,8 +18,7 @@ exports.up = function(knex, Promise) {
   		table.boolean('lived_in');
   		table.boolean('want_to_go');
   		table.integer('user_id').unsigned();
-  		table.foreign('user_id')
-  			.references('track_my_states_users.id');
+  		table.foreign('user_id').references('track_my_states_users.id');
 
   		table.timestamps(true, true);
   	})
