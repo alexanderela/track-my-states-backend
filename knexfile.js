@@ -3,14 +3,16 @@
 module.exports = {
 
   development: {
-    client: 'sqlite3',
-    connection: {
-      filename: './dev.sqlite3'
-    }
+    client: 'pg',
+    connection: 'postgres://localhost/track_my_states_users',
+    migrations: {
+      directory: './db/migrations'
+    },
+    useNullAsDefault: true,
   },
 
   staging: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
       database: 'my_db',
       user:     'username',
@@ -26,7 +28,7 @@ module.exports = {
   },
 
   production: {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
       database: 'my_db',
       user:     'username',
