@@ -2,17 +2,17 @@ const mockUsers = [
 	{
 		'name': 'Alvin',
 		'email': 'alvin@chipmunks.com',
-		'password': 'password1',
+		'password': 'password1'
 	},
 	{
 		'name': 'Simon',
 		'email': 'simon@chipmunks.com',
-		'password': 'password2',
+		'password': 'password2'
 	},
 	{
 		'name': 'Theodore',
 		'email': 'theodore@chipmunks.com',
-		'password': 'password3',
+		'password': 'password3'
 	}
 ]
 
