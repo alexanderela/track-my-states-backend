@@ -1,19 +1,23 @@
 const seedData = require('../../../utils/seedMocks.js');
 
 const createUsers = (knex, user) => {
+  const { name, email, password } = user;
+
   return knex('track_my_states_users').insert({
-    'name': user.name,
-    'email': user.email,
-    'password': user.password,
+    'name': name,
+    'email': email,
+    'password': password,
   }, 'id')
   .then(userIds => {
     let favoritePromises = seedData.mockFavoriteStates.map(mockFav => {
+      const { state_name, number_of_stars, been_to, lived_in, want_to_go } = mockFav;
+
       return createFavorites(knex, {
-        'state_name': mockFav.state_name,
-        'number_of_stars': mockFav.number_of_stars,
-        'been_to': mockFav.been_to,
-        'lived_in': mockFav.lived_in,
-        'want_to_go': mockFav.want_to_go,
+        'state_name': state_name,
+        'number_of_stars': number_of_stars,
+        'been_to': been_to,
+        'lived_in': lived_in,
+        'want_to_go': want_to_go,
         'user_id': userIds[0]
       })
     })
