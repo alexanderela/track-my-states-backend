@@ -4,8 +4,9 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = chai.expect;
 const app = require('../server');
-const configuration = require('./knexfile')[environment]
+const configuration = require('../knexfile')[environment]
 const database = require('knex')(configuration)
+const { mockUsers, mockUsersError, mockFavoriteStates, mockFavoriteStatesError } = require('../testMocks');
 
 chai.use(chaiHttp)
 

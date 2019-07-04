@@ -38,6 +38,6 @@ exports.seed = function(knex) {
       })
       return Promise.all(userPromises)
     })
-    .then(() => console.log('Successfully seeded database!'))
-    .catch(error => console.log(`Error seeding database: ${error.message}`))
+    .then(() => console.log('Successfully seeded testing database!'))
+    .catch(error => console.log(`Error seeding testing database: ${error.message}`))
 };
