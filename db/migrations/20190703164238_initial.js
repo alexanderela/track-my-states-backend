@@ -27,7 +27,7 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
   return Promise.all([
-  	knex.schema.dropTable('track_my_states_users'),
-  	knex.schema.dropTable('track_my_states_favorite_states')
+  	knex.schema.dropTable('track_my_states_favorite_states'),
+  	knex.schema.dropTable('track_my_states_users')
   ]);
 };
