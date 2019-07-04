@@ -4,11 +4,26 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/track_my_states_users',
+    connection: 'postgres://localhost/track_my_states',
     migrations: {
       directory: './db/migrations'
     },
-    useNullAsDefault: true,
+    seeds: {
+      directory: './db/seeds/dev'
+    },
+    useNullAsDefault: true
+  },
+
+  test: {
+    client: 'pg',
+    connection: 'postgres://localhost/track_my_states_test',
+    migrations: {
+      directory: './db/migrations'
+    },
+    seeds: {
+      directory: './db/seeds/test'
+    },
+    useNullAsDefault: true
   },
 
   staging: {
@@ -29,18 +44,13 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
+    connection: process.env.DATABASE_URL + `?ssl=true`,
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      directory: './db/migrations'
+    },
+    seeds: {
+      directory: './db/seeds/production'
+    },
+    useNullAsDefault: true
   }
-
 };
