@@ -40,11 +40,12 @@ describe('server.js', () => {
 		})
 
 
-		it('should return all the users in the DB', async () => {
-			const expectedUsers = database('track_my_states').select()
-			const result = await request(app).get('/api/v1/users')
-			const users = result.body
-			expect(users).toEqual(expectedUsers)
+		it('should return status of 200 on GET request', async () => {
+			chai.request(app)
+				.get('/api/v1/users')
+				.end((error, response) => {
+					expect(response).to.have.status(200)
+				})
 		})
 	})
 })

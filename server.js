@@ -18,7 +18,7 @@ app.get('/api/v1/users', (request, response) => {
 			response.status(200).json(users);
 		})
 		.catch((error) => {
-			response.status(500).json({ error });
+			response.status(500).json({ error: error.message });
 		});
 });
 
