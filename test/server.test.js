@@ -47,6 +47,15 @@ describe('server.js', () => {
 					expect(response).to.have.status(200)
 				})
 		})
+
+		it('should return a 404 for a route that does not exist', () => {
+			chai.request(app)
+				.get('/api/v1/uzerz')
+				.end((error, response) => {
+					expect(response).to.have.status(404)
+					expect(response).to.be.html
+				})
+		})
 	})
 })
 
