@@ -56,6 +56,20 @@ describe('server.js', () => {
 					expect(response).to.be.html
 				})
 		})
+
+		it('should return an array of users', () => {
+			chai.request(app)
+				.get('/api/v1/users')
+				.end((error, response) => {
+					expect(response.body.length).to.equal(3)
+					expect(response.body[0]).to.be.a('object')
+					expect(response.body[1]).to.be.a('object')
+					expect(response.body[2]).to.be.a('object')
+					expect(response.body[0]).to.have.property('name')
+					expect(response.body[1]).to.have.property('email')
+					expect(response.body[2]).to.have.property('password')
+				})
+		})
 	})
 })
 
