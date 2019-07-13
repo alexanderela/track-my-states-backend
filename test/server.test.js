@@ -13,7 +13,7 @@ chai.use(chaiHttp)
 
 describe('Get all users', () => {
 
-		it('should return status of 200 on GET request', async () => {
+		it.skip('should return status of 200 on GET request', async () => {
 			chai.request(app)
 				.get('/api/v1/users')
 				.end((error, response) => {
@@ -21,7 +21,7 @@ describe('Get all users', () => {
 				})
 		})
 
-		it('should return a 404 for a route that does not exist', () => {
+		it.skip('should return a 404 for a route that does not exist', () => {
 			chai.request(app)
 				.get('/api/v1/uzerz')
 				.end((error, response) => {
@@ -30,7 +30,7 @@ describe('Get all users', () => {
 				})
 		})
 
-		it('should return an array of users', () => {
+		it.skip('should return an array of users', () => {
 			chai.request(app)
 				.get('/api/v1/users')
 				.end((error, response) => {

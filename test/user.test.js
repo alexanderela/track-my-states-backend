@@ -24,7 +24,7 @@ describe('User Middleware', () => {
 	})
 
 	describe('User login', () => {
-		it('should return status 201 if a user successfully logs in', done => {
+		it.skip('should return status 201 if a user successfully logs in', done => {
 			const userRequest = {
 				email: 'alvin@chipmunks.com',
 				password: 'password1'
