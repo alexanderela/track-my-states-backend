@@ -11,34 +11,7 @@ const { mockUsers, mockUsersError, mockFavoriteStates, mockFavoriteStatesError }
 
 chai.use(chaiHttp)
 
-describe('server.js', () => {
-	before(done => { 
-		database.migrate.rollback()
-		.then(() => database.migrate.latest())
-		.then(() => database.seed.run())
-		.then(() => done())
-	})
-
-	after(done => {
-		database.migrate.rollback()
-			.then(() => console.log('Testing complete.  Db rolled back'))
-			.then(() => done())
-	})
-
-	describe('GET /api/v1/users', () => {
-		beforeEach(done => {
-			database.migrate.rollback()
-				.then(() => database.migrate.latest())
-				.then(() => database.seed.run())
-				.then(() => done())
-		})
-
-		afterEach(done => {
-			database.migrate.rollback()
-				.then(() => console.log('Testing complete.  Db rolled back'))
-				.then(() => done())
-		})
-
+describe('Get all users', () => {
 
 		it('should return status of 200 on GET request', async () => {
 			chai.request(app)
@@ -71,7 +44,6 @@ describe('server.js', () => {
 				})
 		})
 	})
-})
 
 // GET View all users
 // POST Log user in
