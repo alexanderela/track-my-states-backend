@@ -11,43 +11,39 @@ const { mockUsers, mockUsersError, mockFavoriteStates, mockFavoriteStatesError }
 
 chai.use(chaiHttp)
 
-describe('server.js', () => {
-	before(done => { 
-		database.migrate.rollback()
-		.then(() => database.migrate.latest())
-		.then(() => database.seed.run())
-		.then(() => done())
-	})
+describe('Get all users', () => {
 
-	after(done => {
-		database.migrate.rollback()
-			.then(() => console.log('Testing complete.  Db rolled back'))
-			.then(() => done())
-	})
-
-	describe('GET /api/v1/users', () => {
-		beforeEach(done => {
-			database.migrate.rollback()
-				.then(() => database.migrate.latest())
-				.then(() => database.seed.run())
-				.then(() => done())
+		it.skip('should return status of 200 on GET request', async () => {
+			chai.request(app)
+				.get('/api/v1/users')
+				.end((error, response) => {
+					expect(response).to.have.status(200)
+				})
 		})
 
-		afterEach(done => {
-			database.migrate.rollback()
-				.then(() => console.log('Testing complete.  Db rolled back'))
-				.then(() => done())
+		it.skip('should return a 404 for a route that does not exist', () => {
+			chai.request(app)
+				.get('/api/v1/uzerz')
+				.end((error, response) => {
+					expect(response).to.have.status(404)
+					expect(response).to.be.html
+				})
 		})
 
-
-		it('should return all the users in the DB', async () => {
-			const expectedUsers = database('track_my_states').select()
-			const result = await request(app).get('/api/v1/users')
-			const users = result.body
-			expect(users).toEqual(expectedUsers)
+		it.skip('should return an array of users', () => {
+			chai.request(app)
+				.get('/api/v1/users')
+				.end((error, response) => {
+					expect(response.body.length).to.equal(3)
+					expect(response.body[0]).to.be.a('object')
+					expect(response.body[1]).to.be.a('object')
+					expect(response.body[2]).to.be.a('object')
+					expect(response.body[0]).to.have.property('name')
+					expect(response.body[1]).to.have.property('email')
+					expect(response.body[2]).to.have.property('password')
+				})
 		})
 	})
-})
 
 // GET View all users
 // POST Log user in
